@@ -15,23 +15,17 @@ RUN cd /tmp && \
     make && \
     make install && \
     rm -rf /tmp/xdebug
+
+RUN curl -sS https://getcomposer.org/installer | php -- \
+    --install-dir=/usr/bin --filename=composer
+
+RUN pear config-set http_proxy http://192.168.0.1:3128 \
+    && pecl channel-update pecl.php.net \
+    && pecl install redis && docker-php-ext-enable redis
+
 # Copy xdebug.ini to /usr/local/etc/php/conf.d/
 COPY etc/ /usr/local/etc
 
-#RUN pear config-set http_proxy http://192.168.0.1:3128 \
-#    && pecl channel-update pecl.php.net \
-#    && pecl install xdebug-3.2.2 \
-#    && echo "zend_extension=xdebug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.discover_client_host=false" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.start_with_request=trigger" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-#    && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-
-# Since this Dockerfile extends the official Docker image `wordpress`,
-# and since `wordpress`, in turn, extends the official Docker image `php`,
-# the helper script docker-php-ext-enable (defined for image `php`)
-# works here, and we can use it to enable xdebug:
+RUN useradd --no-log-init --create-home --system -s /bin/bash -g www-data -u 1000 wp
 
 RUN docker-php-ext-enable xdebug

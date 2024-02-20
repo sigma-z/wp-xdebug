@@ -1,13 +1,14 @@
 version: '3.8'
 services:
     wordpress:
-        image: wordpress
+        image: wordpress-multisite
         restart: unless-stopped
         container_name: wordpress
         build:
             dockerfile: Dockerfile # this line is actually redundant here - you need it only if you want to use some custom name for your Dockerfile
             context: ./
         environment:
+            WORDPRESS_TABLE_PREFIX: wp_
             WORDPRESS_DB_HOST: wordpress-db
             WORDPRESS_DB_USER: exampleuser
             WORDPRESS_DB_PASSWORD: examplepass
@@ -34,12 +35,21 @@ services:
             MYSQL_DATABASE: wordpress
             MYSQL_USER: exampleuser
             MYSQL_PASSWORD: examplepass
-            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         volumes:
             - ./database:/var/lib/mysql
         networks:
             - web
             - internal
+    wp-redis:
+        image: redis:7.0-alpine
+        container_name: wp-redis
+        restart: always
+        networks:
+            - web
+            - internal
+        ports:
+            - "6380:6379"
 networks:
     web:
         external: true

@@ -1,0 +1,28 @@
+{
+  "name": "sigma-z/wp-multisite",
+  "type": "project",
+  "license": "proprietary",
+  "description": "Wordpress multisite",
+  "config": {
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true,
+      "mnsami/composer-custom-directory-installer": true
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "rhubarbgroup/redis-cache": "^2.5",
+    "wp-cli/wp-cli": "2.9.*",
+    "wp-cli/wp-cli-bundle": "2.9.*",
+    "wpackagist-plugin/redis-cache": "2.5.*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  }
+}
