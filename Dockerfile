@@ -26,6 +26,8 @@ RUN pear config-set http_proxy http://192.168.0.1:3128 \
 # Copy xdebug.ini to /usr/local/etc/php/conf.d/
 COPY etc/ /usr/local/etc
 
+RUN echo "upload_max_filesize=200M" >> /usr/local/etc/php/conf.d/my-php.ini
+
 RUN useradd --no-log-init --create-home --system -s /bin/bash -g www-data -u 1000 wp
 
 RUN docker-php-ext-enable xdebug
