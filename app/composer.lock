@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82027bbd97925d71bce545da519ea1a1",
+    "content-hash": "9409054d033d5f19a4b3d2619c01b0c4",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -4759,6 +4759,24 @@
                 "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.3.5"
             },
             "time": "2023-11-10T14:28:03+00:00"
+        },
+        {
+            "name": "wpackagist-plugin/filebird",
+            "version": "5.6.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/filebird/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/filebird.zip?timestamp=1705654311"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/filebird/"
         },
         {
             "name": "wpackagist-plugin/redis-cache",
