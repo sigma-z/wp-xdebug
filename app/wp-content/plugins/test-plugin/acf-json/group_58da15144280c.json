@@ -1,0 +1,43 @@
+{
+  "key": "group_58da15144280c",
+  "title": "Page Properties",
+  "fields": [
+    {
+      "key": "field_58da15297d679",
+      "label": "Simple text field",
+      "name": "simple_text",
+      "type": "text",
+      "wpml_cf_preferences": 2,
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": "test",
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": 1,
+  "description": ""
+}
